@@ -1,14 +1,10 @@
-body {
-    background-image: url('bgindex.png'); /* Ganti dengan nama file gambar */
-    background-size: cover; /* Agar gambar menutupi seluruh halaman */
-    background-position: center; /* Pusatkan gambar */
-    background-repeat: no-repeat; /* Hindari pengulangan gambar */
-}
-
-/* Mengatur gaya dasar seluruh halaman */
+/* CSS Utama */
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #fce4ec;
+    background-image: url('bgindex.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     text-align: center;
     margin: 0;
     padding: 0;
@@ -16,64 +12,95 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    flex-direction: column; /* Memastikan elemen diatur secara vertikal */
+    flex-direction: column;
 }
 
-/* Mengatur kontainer utama */
 .container {
     background: white;
     padding: 40px;
     border-radius: 20px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 400px;
+    width: 90%; /* Lebar fleksibel */
+    max-width: 400px;
     animation: fadeIn 0.8s ease-in-out;
     transition: transform 0.3s ease-in-out;
 }
 
-/* Memastikan form input memiliki jarak dari sisi kontainer */
-input {
-    display: block;
-    width: calc(100% - 20px);
-    margin: 10px auto;
+/* Input & Button */
+input, button {
+    width: 100%;
     padding: 12px;
+    margin: 10px 0;
     border: 2px solid #d81b60;
     border-radius: 5px;
-    outline: none;
+    font-size: 1em;
+}
+
+button {
+    background-color: #d81b60;
+    color: white;
+    cursor: pointer;
     transition: all 0.3s ease-in-out;
 }
 
-/* Menyesuaikan tata letak tombol Play dan Pause */
-.button-container {
+button:hover {
+    background-color: #b7154a;
+}
+
+/* Navbar */
+.navbar {
     display: flex;
     justify-content: center;
-    align-items: center;
     gap: 20px;
-    margin-top: 20px;
+    padding: 20px;
 }
 
-
-/* Animasi kontainer ketika hover */
-.container:hover {
-    transform: scale(1.02); /* Efek zoom ringan saat hover */
+.navbar a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: 0.3s ease-in-out;
 }
 
-/* Gaya untuk judul utama */
-h1 {
-    color: #d81b60; /* Warna teks pink tua */
-    font-size: 3em; /* Ukuran font besar */
-    animation: slideIn 1s ease-in-out; /* Efek masuk dari atas */
+.navbar a:hover {
+    color: #d81b60;
+    transform: scale(1.1);
 }
 
-/* Gaya untuk paragraf */
-p {
-    color: #555; /* Warna teks abu-abu */
-    font-size: 1.2em; /* Ukuran font sedang */
-    max-width: 600px; /* Membatasi lebar teks */
-    margin: auto; /* Menengahkan teks */
+/* Responsiveness */
+@media (max-width: 768px) {
+    .container {
+        width: 80%; /* Menyesuaikan dengan layar lebih kecil */
+        padding: 20px;
+    }
+    
+    h1 {
+        font-size: 2em;
+    }
+    
+    .navbar {
+        flex-direction: column;
+        gap: 10px;
+    }
 }
+
+@media (max-width: 480px) {
+    .container {
+        width: 90%; /* Menyesuaikan dengan layar HP */
+        padding: 15px;
+    }
+    
+    h1 {
+        font-size: 1.8em;
+    }
+    
+    input, button {
+        font-size: 0.9em;
+        padding: 10px;
+    }
+}
+
 
 /* Animasi saat paragraf muncul */
 @keyframes fadeIn {
