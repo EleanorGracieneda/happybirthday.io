@@ -1,44 +1,150 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Collect Your Coupon</title>
+    <title>Love Coupons</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffe6e6;
             text-align: center;
-            background-color: #fce4ec;
-            padding: 50px;
+            margin: 0;
+            padding: 20px;
         }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
         .coupon {
             background: white;
-            padding: 20px;
-            display: inline-block;
+            padding: 15px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            transition: 0.3s;
+            text-align: center;
         }
-        button {
-            background: #d81b60;
+
+        .coupon:hover {
+            transform: scale(1.05);
+        }
+
+        .coupon h2 {
+            color: #d81b60;
+            font-size: 1.5em;
+        }
+
+        .coupon p {
+            color: #555;
+            font-size: 1em;
+        }
+
+        .claim-button {
+            background-color: #d81b60;
             color: white;
             border: none;
             padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
             cursor: pointer;
-            margin-top: 20px;
+            font-size: 1em;
+            transition: 0.3s;
+        }
+
+        .claim-button:hover {
+            background-color: #b71550;
+        }
+
+        /* Tombol reset tersembunyi */
+        .reset-button {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background: transparent;
+            border: none;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            opacity: 0.2;
+        }
+
+        .reset-button:hover {
+            opacity: 0.5;
         }
     </style>
 </head>
 <body>
-    <div class="coupon">
-        <h2>🎉 Selamat! Kamu mendapatkan kupon spesial! 🎉</h2>
-        <p>Klik tombol di bawah untuk mengklaim kuponmu.</p>
-        <button onclick="claimCoupon()">Klaim Kupon</button>
+    <h1>Love Coupons for You ❤️</h1>
+    <div class="container" id="coupon-container">
+        <!-- Kupon akan dibuat otomatis di sini -->
     </div>
 
+    <!-- Tombol Reset Kupon (Tersembunyi) -->
+    <button class="reset-button" onclick="resetCoupons()">🔄</button>
+
     <script>
-        function claimCoupon() {
-            alert("Kupon berhasil diklaim! 🎁");
+        const coupons = [
+        { id: "Free", title: "Custom your coupon", desc: "Contact your girlfriend to discuss continuing" },
+            { id: "hug", title: "Free Hug", desc: "Redeem this for unlimited warm hugs." },
+            { id: "movie", title: "Movie Night", desc: "A virtual movie date with me, your choice of film!" },
+            { id: "Free", title: "Custom your coupon", desc: "Contact your girlfriend to discuss continuing" },
+            { id: "gift", title: "Surprise Gift", desc: "A mystery surprise sent to you!" },
+            { id: "playground", title: "Playground Date", desc: "Let's have fun at the playground🎡" },
+        ];
+
+        function renderCoupons() {
+            const container = document.getElementById("coupon-container");
+            container.innerHTML = "";
+            let claimedCoupons = JSON.parse(localStorage.getItem('claimedCoupons')) || [];
+
+            coupons.forEach(coupon => {
+                if (!claimedCoupons.includes(coupon.id)) {
+                    let couponElement = document.createElement("div");
+                    couponElement.classList.add("coupon");
+                    couponElement.id = coupon.id;
+                    couponElement.innerHTML = `
+                        <h2>${coupon.title}</h2>
+                        <p>${coupon.desc}</p>
+                        <button class="claim-button" onclick="claimCoupon('${coupon.id}', '${coupon.title}')">Klaim Kupon</button>
+                    `;
+                    container.appendChild(couponElement);
+                }
+            });
         }
+
+        function claimCoupon(couponId, couponName) {
+            alert("Kupon '" + couponName + "' berhasil diklaim! 🎁");
+
+            let claimedCoupons = JSON.parse(localStorage.getItem('claimedCoupons')) || [];
+            if (!claimedCoupons.includes(couponId)) {
+                claimedCoupons.push(couponId);
+                localStorage.setItem('claimedCoupons', JSON.stringify(claimedCoupons));
+            }
+
+            document.getElementById(couponId).remove();
+        }
+
+        function resetCoupons() {
+            if (confirm("Apakah kamu yakin ingin mereset semua kupon?")) {
+                localStorage.removeItem('claimedCoupons');
+                renderCoupons();
+            }
+        }
+
+        // Tambahkan shortcut keyboard "R" untuk reset
+        document.addEventListener("keydown", function(event) {
+            if (event.key.toLowerCase() === "r") {
+                resetCoupons();
+            }
+        });
+
+        window.onload = renderCoupons;
+        
     </script>
 </body>
 </html>
