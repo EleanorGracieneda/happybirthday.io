@@ -106,7 +106,7 @@ p {
     padding: 15px 30px; /* Padding agar tombol terlihat proporsional */
     border: none;
     width: 120px; /* Atur lebar yang sama */
-    height: 50px;
+    height: 30px;
     border-radius: 25px; /* Sudut lebih membulat */
     font-size: 1em;
     cursor: pointer; /* Menunjukkan tombol bisa diklik */
@@ -217,7 +217,7 @@ button {
     background: #d81b60;
     color: white;
     border: none;
-    padding: 10px;
+    padding: 8px;
     cursor: pointer;
     width: 100%;
     border-radius: 5px;
@@ -245,7 +245,7 @@ button:hover {
     background: #888; /* Warna abu-abu */
     color: white;
     border: none;
-    padding: 10px;
+    padding: 8px;
     cursor: pointer;
     width: 100%;
     border-radius: 5px;
