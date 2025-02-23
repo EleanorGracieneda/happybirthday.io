@@ -93,7 +93,7 @@ function typeLetter() {
     if (index < text.length) {
         document.getElementById("letter-text").innerHTML += text.charAt(index);
         index++;
-        setTimeout(typeLetter, 10);
+        setTimeout(typeLetter, 50);
     } else {
         document.getElementById("nextButton").style.display = "block"; // Tampilkan tombol setelah selesai
     }
