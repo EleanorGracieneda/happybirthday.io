@@ -1,0 +1,126 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    background-color: #fce4ec;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Tetap rata tengah */
+    height: 100vh;
+    overflow: auto; /* Agar tidak ada batasan tinggi */
+}
+
+.letter-container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 800px;
+    position: relative;
+    min-height: 150px; /* Minimal tinggi agar tidak terlalu kecil */
+}
+
+        #letter-text {
+            font-size: 1.2em;
+            color: #333;
+            white-space: pre-wrap;
+            overflow: hidden;
+            display: inline-block;
+            animation: blinkCursor 1s infinite;
+        }
+
+        @keyframes blinkCursor {
+            50% { border-color: transparent; }
+        }
+
+        .heart-button {
+            background-color: #ffaebf;
+            color: white;
+            font-size: 2em;
+            width: 60px;
+            height: 60px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            transition: 0.3s ease-in-out;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            animation: heartbeat 1.5s infinite;
+        }
+
+        .heart-button:hover {
+            background-color: #ffd5de;
+            transform: scale(1.2);
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+    /* Gaya untuk semua tombol (Play & Pause) */
+.control-button {
+    background-color: #d81b60; /* Warna pink */
+    color: white; /* Warna teks putih */
+    padding: 15px 30px; /* Padding agar tombol terlihat proporsional */
+    border: none;
+    width: 80px; /* Atur lebar yang sama */
+    height: 30px;
+    border-radius: 25px; /* Sudut lebih membulat */
+    font-size: 1em;
+    cursor: pointer; /* Menunjukkan tombol bisa diklik */
+    transition: all 0.3s ease-in-out;
+    display: flex; /* Pastikan tombol tidak menjadi block */
+    justify-content: center; /* Pusatkan teks dalam tombol */
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+/* Animasi kontainer ketika hover */
+.container:hover {
+    transform: scale(1.02); /* Efek zoom ringan saat hover */
+}
+
+/* Menyesuaikan tata letak tombol Play dan Pause */
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Efek hover dengan animasi */
+.control-button:hover {
+    background-color: #b7154a; /* Warna pink lebih gelap saat hover */
+    transform: scale(1.1); /* Efek membesar saat hover */
+}
+
+/* Efek animasi ripple saat tombol diklik */
+.control-button:active {
+    transform: scale(0.95); /* Tombol sedikit mengecil saat ditekan */
+}
+
+/* Efek kilauan pada tombol */
+.control-button::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: radial-gradient(circle, rgba(255,255,255,0.4) 10%, transparent 10%);
+    transition: 0.6s;
+    transform: translate(-50%, -50%) scale(0);
+}
+
+.control-button:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+}

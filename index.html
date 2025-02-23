@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday & Login</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.3.2"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+    
+</head>
+<body>
+
+    <!-- Halaman Welcome -->
+    <div class="container" id="welcomeScreen">
+        <h1>Hey, <span>it's your Birthday</span></h1>
+        <p>Semoga harimu menyenangkan! 🎉</p>
+        <button onclick="showLogin()">Click Here</button>
+    </div>
+
+    <!-- Halaman Login -->
+    <div class="login-container hidden" id="loginScreen">
+        <h2>Kamu perlu login untuk bisa lanjut 🎉</h2>
+        <input type="text" id="username" placeholder="Nama Lengkap">
+        <input type="password" id="password" placeholder="Hari Ini">
+        <button id="loginButton" onclick="checkLogin()">Login</button>
+        <button class="back-button" onclick="goBack()">Back</button>
+        <p id="error" style="color:red;"></p>
+    </div>
+
+
+    <!-- Audio -->
+    <audio id="myAudio" loop>
+        <source src="bdaysong.mp3" type="audio/mpeg">
+    </audio>
+    <div class="button-container">
+        <button class="control-button" onclick="playMusic()">Play</button>
+        <button class="control-button" onclick="pauseMusic()">Pause</button>
+    </div>
+
+</body>
+</html>
